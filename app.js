@@ -16,13 +16,10 @@ const leaderRouter = require("./routes/leaderRouter");
 const uploadRouter = require("./routes/uploadRouter");
 const mongoose = require("mongoose");
 
+const app = express();
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
-console.log(__dirname);
 
-const app = express();
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
 app.use(
   session({
     name: "session-id",
@@ -86,4 +83,4 @@ connect.then(
   }
 );
 
-exports.app = app;
+module.exports = app;
